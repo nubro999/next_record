@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #121212;
+  --foreground: #d1b48c;
+  --primary: #8b0000;
+  --secondary: #482d2d;
+  --accent: #d1b48c;
+  --muted: #392727;
+  --card: #1a1a1a;
+  --card-foreground: #d1b48c;
+  --border: #392727;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'IM Fell English', serif;
+  background-image: url('/bg-texture.png');
+  background-repeat: repeat;
+  background-size: 400px;
+}
+
+/* Ink Blot Animation */
+@keyframes inkBlot {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.ink-blot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url('/ink-blot.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: inkBlot 2s ease-out forwards;
+  z-index: 10;
+}
+
+/* Paper Texture */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/paper-texture.png');
+  background-repeat: repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Quill cursor */
+.quill-cursor {
+  cursor: url('/quill-cursor.png'), auto;
+}
+
+/* Candle light effect */
+.candle-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.candle-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 222, 173, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* Custom utility classes */
+.gothic-shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 0, 0, 0.1);
+}
+
+.gothic-border {
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.gothic-border::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+/* Scroll Reveal */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

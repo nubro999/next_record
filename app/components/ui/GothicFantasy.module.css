@@ -1,0 +1,193 @@
+/* Gothic Fantasy Theme */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;500;600;700&family=Eczar:wght@400;500;600&display=swap');
+
+/* Base Elements */
+.gf-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #d1b48c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.gf-heading {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: #d1b48c;
+  letter-spacing: 0.5px;
+}
+
+.gf-body {
+  font-family: 'IM Fell English', serif;
+  color: #a7a7a7;
+  line-height: 1.7;
+}
+
+.gf-quote {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: #d1b48c;
+  border-left: 3px solid #482d2d;
+  padding-left: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Cards & Containers */
+.gf-card {
+  background-color: #1a1a1a;
+  border: 1px solid #392727;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(121, 85, 72, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.gf-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #8b0000, transparent);
+  opacity: 0.7;
+}
+
+.gf-container {
+  background-color: #1a1a1a;
+  position: relative;
+}
+
+/* Buttons */
+.gf-btn-primary {
+  font-family: 'Cinzel', serif;
+  background-color: #482d2d;
+  color: #d1b48c;
+  border: 1px solid #684141;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.gf-btn-primary:hover {
+  background-color: #583838;
+  color: #e7d6b8;
+  border-color: #8b0000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.gf-btn-secondary {
+  font-family: 'Cinzel', serif;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #d1b48c;
+  border: 1px solid #392727;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gf-btn-secondary:hover {
+  background-color: rgba(20, 20, 20, 0.7);
+  color: #e7d6b8;
+  border-color: #684141;
+}
+
+/* Form Elements */
+.gf-input {
+  background-color: #1a1a1a;
+  border: 1px solid #392727;
+  color: #d1b48c;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 2px;
+  font-family: 'IM Fell English', serif;
+  transition: all 0.3s ease;
+}
+
+.gf-input:focus {
+  border-color: #684141;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(104, 65, 65, 0.2);
+}
+
+.gf-textarea {
+  background-color: #1a1a1a;
+  border: 1px solid #392727;
+  color: #d1b48c;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 2px;
+  font-family: 'IM Fell English', serif;
+  min-height: 150px;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.gf-textarea:focus {
+  border-color: #684141;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(104, 65, 65, 0.2);
+}
+
+/* Dividers */
+.gf-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #684141, transparent);
+  border: none;
+  margin: 2rem 0;
+}
+
+/* Decorative Elements */
+.gf-ornament {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.gf-ornament::before,
+.gf-ornament::after {
+  content: '✦';
+  color: #684141;
+  display: inline-block;
+  position: relative;
+  top: -0.5rem;
+  margin: 0 1rem;
+}
+
+.gf-frame {
+  border: 1px solid #392727;
+  padding: 2rem;
+  position: relative;
+}
+
+.gf-frame::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid #392727;
+  pointer-events: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #392727;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #482d2d;
+}

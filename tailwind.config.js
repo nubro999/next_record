@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/**.{js,ts,jsx,tsx}', // Next.js의 pages 디렉토리
-    './components/**/*/*.{js,ts,jsx,tsx}', // components 디렉토리
-    './app/**/*.{js,ts,jsx,tsx}', // app 디렉토리 (Next.js 13 이상)
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {

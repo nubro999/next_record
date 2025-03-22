@@ -42,6 +42,7 @@ export default function DiaryDetailPage() {
   const handleRequestAnalysis = async () => {
     try {
       setAnalyzing(true);
+      console.log("handleRequestAnalysis")
       const analysisData = await getAiAnalysis(Number(id));
       setAnalysis(analysisData);
 

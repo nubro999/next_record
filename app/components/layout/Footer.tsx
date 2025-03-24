@@ -15,24 +15,24 @@ export default function Footer() {
               <span className="font-cinzel text-lg font-bold text-accent">
                 RecorD
               </span>
-              <span className="ml-1 text-primary text-xs align-top font-fell">&trade;</span>
+              <span className="ml-1 text-primary text-xs align-top ">&trade;</span>
             </div>
-            <p className="mt-2 text-foreground/70 text-sm font-fell">
+            <p className="mt-2 text-foreground/70 text-sm ">
               Chronicle your destiny in the shadows of eternity
             </p>
           </div>
           
           <div className="mb-6 md:mb-0">
             <div className="flex items-center space-x-4">
-              <Link href="/terms" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm font-fell">
+              <Link href="/terms" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm ">
                 Covenant
               </Link>
               <span className="text-muted">|</span>
-              <Link href="/privacy" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm font-fell">
+              <Link href="/privacy" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm ">
                 Mystical Agreements
               </Link>
               <span className="text-muted">|</span>
-              <Link href="/contact" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm font-fell">
+              <Link href="/contact" className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm ">
                 Summon Us
               </Link>
             </div>

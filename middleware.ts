@@ -29,6 +29,10 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/diary/:path*',
+    '/analysis/:path*',
+    '/calendar/:path*',
+    '/settings/:path*',
+    '/profile/:path*',
     '/login',
     '/register',
   ],

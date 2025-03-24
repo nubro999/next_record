@@ -22,24 +22,24 @@ export default function DiaryCard({ diary }: DiaryCardProps) {
     <Link href={`/diary/${diary.id}`}>
       <div className="border border-border bg-card p-6 shadow-gothic hover:shadow-none transition-all duration-500 group relative">
         {/* Date ribbon */}
-        <div className="absolute top-4 right-4 flex items-center font-fell text-sm text-foreground/70">
+        <div className="absolute top-4 right-4 flex items-center  text-sm text-foreground/70">
           <span className="mr-2">
             {diary.date ? format(new Date(diary.date), 'MMM d, yyyy') : 'Undated entry'}
           </span>
           <FaFeather className="text-primary/60 transform -rotate-45" />
         </div>
         
-        <h2 className="text-xl font-cinzel text-accent mb-4 pr-24">{diary.title || 'Untitled Chronicle'}</h2>
+        <h2 className="text-xl text-accent mb-4 pr-24">{diary.title || 'Untitled Chronicle'}</h2>
         
         <p className="font-fell text-foreground/80 line-clamp-3 mb-6">{diary.content || 'No content'}</p>
         
         <div className="flex justify-between items-center">
           {diary.analysis?.feelings?.emotion ? (
             <div className="flex items-center">
-              <span className="text-sm font-cinzel text-foreground/60 mr-2">Aura:</span>
+              <span className="text-sm text-foreground/60 mr-2">Aura:</span>
               <span className="px-3 py-1 text-xs bg-muted/30 border border-border/50 rounded-sm flex items-center">
                 {getSentimentIcon()}
-                <span className="ml-2 font-fell">{diary.analysis.feelings.emotion}</span>
+                <span className="ml-2 ">{diary.analysis.feelings.emotion}</span>
               </span>
             </div>
           ) : (
@@ -56,7 +56,7 @@ export default function DiaryCard({ diary }: DiaryCardProps) {
             </Link>
             
             <span className="text-foreground/50 group-hover:text-accent transition-colors duration-300 flex items-center">
-              <span className="mr-1 font-fell text-sm">Continue reading</span>
+              <span className="mr-1  text-sm">Continue reading</span>
               <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </div>

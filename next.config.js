@@ -6,6 +6,9 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
   },
+  // Tell Next.js that we have an app directory implementation but still use pages primarily
+  // This ensures both systems work together
+  appDir: true,
 };
 
 module.exports = nextConfig;

@@ -1,18 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
 import { FaBook, FaFeather, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function Header() {
-  const router = useRouter();
   const { user, isAuthenticated, logout } = useAuth();
   
   const handleLogout = () => {
     logout();
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   return (
@@ -23,13 +21,13 @@ export default function Header() {
             <span className="font-cinzel text-2xl font-bold text-accent tracking-wider">
               RecorD
             </span>
-            <span className="ml-1 text-primary text-xs align-top font-fell">&trade;</span>
+            <span className="ml-1 text-primary text-xs align-top ">&trade;</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               href="/diary" 
-              className="font-fell text-foreground hover:text-accent transition-colors duration-300 border-b border-transparent hover:border-primary/50 pb-1"
+              className="text-foreground hover:text-accent transition-colors duration-300 border-b border-transparent hover:border-primary/50 pb-1"
             >
               <span className="flex items-center">
                 <FaBook className="mr-2 text-primary/70" />
@@ -38,7 +36,7 @@ export default function Header() {
             </Link>
             <Link 
               href="/analysis" 
-              className="font-fell text-foreground hover:text-accent transition-colors duration-300 border-b border-transparent hover:border-primary/50 pb-1"
+              className="text-foreground hover:text-accent transition-colors duration-300 border-b border-transparent hover:border-primary/50 pb-1"
             >
               <span className="flex items-center">
                 <FaFeather className="mr-2 text-primary/70" />
@@ -52,13 +50,13 @@ export default function Header() {
               <>
                 <Link 
                   href="/profile" 
-                  className="font-fell text-foreground hover:text-accent transition-colors duration-300"
+                  className="text-foreground hover:text-accent transition-colors duration-300"
                 >
                   <FaUserCircle className="text-xl" />
                 </Link>
                 <Link 
                   href="/diary/new" 
-                  className="hidden md:block px-4 py-2 bg-primary/80 hover:bg-primary text-accent font-cinzel text-sm border border-border/50 shadow-sm transition-colors duration-300"
+                  className="hidden md:block px-4 py-2 bg-primary/80 hover:bg-primary text-accent text-sm border border-border/50 shadow-sm transition-colors duration-300"
                 >
                   New Entry
                 </Link>
@@ -73,7 +71,7 @@ export default function Header() {
             ) : (
               <Link 
                 href="/login" 
-                className="px-6 py-2 bg-card hover:bg-card/80 text-accent font-cinzel text-sm border border-border/50 shadow-gothic transition-colors duration-300"
+                className="px-6 py-2 bg-card hover:bg-card/80 text-accent text-sm border border-border/50 shadow-gothic transition-colors duration-300"
               >
                 Enter the Realm
               </Link>

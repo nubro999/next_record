@@ -5,7 +5,9 @@ import { usePathname } from 'next/navigation';
 import { FaBook, FaFeather, FaCalendarAlt, FaCog, FaScroll, FaMoon } from 'react-icons/fa';
 
 export default function Sidebar() {
-  const pathname = usePathname();
+  // Get pathname from window.location.pathname in client components
+  // This works in both app and pages router
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
 
   const menuItems = [
     { name: 'Chronicles', href: '/diary', icon: <FaBook /> },
@@ -20,7 +22,7 @@ export default function Sidebar() {
         <div className="mb-8 px-2">
           <Link
             href="/diary/new"
-            className="flex items-center justify-center w-full py-3 px-4 bg-primary/80 hover:bg-primary text-accent font-cinzel text-sm border border-border transition-colors duration-300 shadow-gothic"
+            className="flex items-center justify-center w-full py-3 px-4 bg-primary/80 hover:bg-primary text-accent text-sm border border-border transition-colors duration-300 shadow-gothic"
           >
             <FaFeather className="mr-2" />
             <span>New Chronicle</span>
@@ -58,7 +60,7 @@ export default function Sidebar() {
         <div className="mt-auto pt-6 border-t border-border/50">
           <div className="flex justify-center opacity-70 hover:opacity-100 transition-opacity duration-300">
             <button 
-              className="flex items-center py-2 px-4 text-xs font-cinzel text-accent/80"
+              className="flex items-center py-2 px-4 text-xs text-accent/80"
               aria-label="Dark Mode"
             >
               <FaMoon className="mr-2" />

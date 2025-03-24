@@ -1,10 +1,9 @@
 // app/layout.tsx
 import './globals.css';
-import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
-import Footer from './components/layout/Footer';
 import { AuthProvider } from './context/AuthContext';
 
+// Simple layout that just provides styles and fonts
+// All content will be served from pages directory
 export default function RootLayout({
   children,
 }: {
@@ -15,19 +14,15 @@ export default function RootLayout({
       <head>
         <title>RecorD - Mystic Chronicles</title>
         <meta name="description" content="Document your thoughts in a gothic fantasy realm" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;500;600;700&family=Eczar:wght@400;500;600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decobox.woff2" />
+        <link rel="preconnect" href="https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decobox.woff2" crossOrigin="anonymous" />
+        <link href="https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Decobox.woff2" rel="stylesheet" />
       </head>
       <body className="paper-texture">
         <AuthProvider>
-          <div className="flex min-h-screen flex-col bg-gradient-gothic">
-            <Header />
-            <div className="flex flex-1">
-              <Sidebar />
-              <main className="flex-1 p-6 candle-light">{children}</main>
-            </div>
-            <Footer />
+          <div id="app-root">
+            {/* This will never render content since pages directory handles routing */}
+            {/* Pages directory content uses _app.tsx for layout */}
           </div>
         </AuthProvider>
       </body>

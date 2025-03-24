@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
+// No router import needed
 import { User, JwtToken } from '../types';
 
 interface AuthContextType {
@@ -23,7 +23,6 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   // Check for saved user data on app load
   useEffect(() => {
@@ -74,7 +73,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Also clear the cookie
     document.cookie = 'jwt_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     setUser(null);
-    router.push('/login');
+    // Use window.location for navigation to work in both app and pages router
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login';
+    }
   };
 
   return (

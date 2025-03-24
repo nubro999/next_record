@@ -67,12 +67,12 @@ export default function DiaryListPage() {
   return (
     <div className="container mx-auto p-6 max-w-4xl">
       <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-        <h1 className="font-cinzel text-3xl font-bold mb-6 md:mb-0 text-accent">Dark Chronicles</h1>
+        <h1 className="text-3xl font-bold mb-6 md:mb-0 text-accent">Dark Chronicles</h1>
         
         <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
           <Link
             href="/diary/voice"
-            className="px-5 py-3 bg-muted text-accent font-cinzel text-sm border border-border shadow-gothic hover:bg-muted/80 transition-colors duration-300 flex items-center justify-center"
+            className="px-5 py-3 bg-muted text-accent text-sm border border-border shadow-gothic hover:bg-muted/80 transition-colors duration-300 flex items-center justify-center"
           >
             <FaMicrophone className="mr-2 text-primary/70" />
             <span>Spectral Recording</span>
@@ -80,7 +80,7 @@ export default function DiaryListPage() {
           
           <Link
             href="/diary/new"
-            className="px-5 py-3 bg-primary/80 text-accent font-cinzel text-sm border border-border shadow-gothic hover:bg-primary transition-colors duration-300 flex items-center justify-center"
+            className="px-5 py-3 bg-primary/80 text-accent text-sm border border-border shadow-gothic hover:bg-primary transition-colors duration-300 flex items-center justify-center"
           >
             <FaFeather className="mr-2" />
             <span>New Chronicle</span>
@@ -93,10 +93,10 @@ export default function DiaryListPage() {
           <div className="mb-6">
             <FaScroll className="text-5xl mx-auto text-primary/50" />
           </div>
-          <p className="text-foreground/70 mb-8 font-fell">Your grimoire awaits its first inscriptions.</p>
+          <p className="text-foreground/70 mb-8 ">Your grimoire awaits its first inscriptions.</p>
           <Link
             href="/diary/new"
-            className="px-6 py-3 bg-primary/80 text-accent font-cinzel text-sm border border-border shadow-gothic hover:bg-primary transition-colors duration-300 inline-flex items-center"
+            className="px-6 py-3 bg-primary/80 text-accent text-sm border border-border shadow-gothic hover:bg-primary transition-colors duration-300 inline-flex items-center"
           >
             <FaFeather className="mr-2" />
             <span>Begin Your First Chronicle</span>

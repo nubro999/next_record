@@ -53,7 +53,7 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-sm max-w-4xl mx-auto">
+    <form onSubmit={handleSubmit} className="text-black bg-white p-6 rounded shadow-sm max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">{diary ? 'Edit Entry' : 'New Entry'}</h1>
       
       <div className="mb-4">
@@ -66,7 +66,7 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
           name="date"
           value={formData.date as string}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+          className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
           required
         />
       </div>
@@ -81,7 +81,7 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+          className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
           placeholder="Enter a title for your entry..."
           required
         />
@@ -97,14 +97,14 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
           value={formData.content}
           onChange={handleChange}
           rows={8}
-          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+          className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
           placeholder="Write your thoughts here..."
           required
         />
       </div>
 
       <div className="border-t border-gray-200 pt-6 mt-6 mb-6">
-        <h3 className="text-xl font-bold mb-4">Daily Sections</h3>
+        <h3 className="text-gray-800 text-xl font-bold mb-4">Daily Sections</h3>
         
         <div className="space-y-4">
           <div>
@@ -117,7 +117,7 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
               value={formData.structuredContent?.morning || ''}
               onChange={handleStructuredContentChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+              className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
               placeholder="Morning thoughts..."
             />
           </div>
@@ -132,7 +132,7 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
               value={formData.structuredContent?.afternoon || ''}
               onChange={handleStructuredContentChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+              className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
               placeholder="Afternoon thoughts..."
             />
           </div>
@@ -147,10 +147,10 @@ export default function DiaryForm({ diary, onSubmit }: DiaryFormProps) {
               value={formData.structuredContent?.evening || ''}
               onChange={handleStructuredContentChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
+              className="text-black w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-accent"
               placeholder="Evening thoughts..."
             />
-          </div>
+          </div> 
         </div>
       </div>
 

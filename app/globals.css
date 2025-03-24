@@ -1,17 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'GowunDodum-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
-  --background: #121212;
-  --foreground: #d1b48c;
-  --primary: #8b0000;
-  --secondary: #482d2d;
-  --accent: #d1b48c;
-  --muted: #392727;
-  --card: #1a1a1a;
-  --card-foreground: #d1b48c;
-  --border: #392727;
+  --background: #1A1A40;
+  --foreground: #ffffff;
+  --primary: #7A0BC0;
+  --secondary: #270082;
+  --accent: #FA58B6;
+  --muted: #2A2A60;
+  --card: #121230;
+  --card-foreground: #ffffff;
+  --border: #270082;
 }
 
 html {
@@ -21,7 +27,7 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'IM Fell English', serif;
+  font-family: ''GowunDodum-Regular'';
   background-image: url('/bg-texture.svg');
   background-repeat: repeat;
   background-size: 400px;

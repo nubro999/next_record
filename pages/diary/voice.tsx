@@ -11,7 +11,7 @@ export default function VoiceDiaryPage() {
   const [diary, setDiary] = useState<Diary | null>(null);
   const [completionStatus, setCompletionStatus] = useState<CompletionStatus | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'morning' | 'afternoon' | 'evening' | 'general'>('general');
+  const [activeTab, setActiveTab] = useState<'morning' | 'afternoon' | 'evening' | 'general' | 'question_response'>('general');
   
   // Access parameters from searchParams
   const [searchParams, setSearchParams] = useState(new URLSearchParams(
@@ -88,20 +88,44 @@ export default function VoiceDiaryPage() {
   };
   
   const renderMissingInfoTabs = () => {
-    if (!completionStatus || completionStatus.complete || !completionStatus.missingInformation.length) {
+    if (!completionStatus) {
       return null;
     }
     
+    // If we have a meaningful question to ask (conversation phase is asking_question)
+    if (completionStatus.conversationPhase === 'asking_question' && completionStatus.meaningfulQuestion) {
+      return (
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-2">Meaningful Question</h3>
+          <div className="p-4 border border-primary/30 bg-primary/10 rounded-md mb-4">
+            <p className="text-foreground">{completionStatus.meaningfulQuestion}</p>
+          </div>
+          <button
+            onClick={() => setActiveTab('question_response')}
+            className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+          >
+            Respond to Question
+          </button>
+        </div>
+      );
+    }
+    
+    // If diary is complete or no missing information
+    if (completionStatus.complete || !completionStatus.missingInformation.length) {
+      return null;
+    }
+    
+    // Otherwise show missing information tabs
     return (
       <div className="mb-6">
         <h3 className="text-lg font-semibold mb-2">Additional Information Needed</h3>
-        <div className="flex space-x-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {completionStatus.missingInformation.includes('morning') && (
             <button
               onClick={() => setActiveTab('morning')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                activeTab === 'morning' ? 'bg-blue-500 text-white' : 'bg-gray-200'
-              }`}
+              className={`px-3 py-1 rounded-md text-sm ${
+                activeTab === 'morning' ? 'bg-primary text-white' : 'bg-secondary/30 hover:bg-secondary/50'
+              } transition-colors`}
             >
               Morning
             </button>
@@ -110,9 +134,9 @@ export default function VoiceDiaryPage() {
           {completionStatus.missingInformation.includes('afternoon') && (
             <button
               onClick={() => setActiveTab('afternoon')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                activeTab === 'afternoon' ? 'bg-blue-500 text-white' : 'bg-gray-200'
-              }`}
+              className={`px-3 py-1 rounded-md text-sm ${
+                activeTab === 'afternoon' ? 'bg-primary text-white' : 'bg-secondary/30 hover:bg-secondary/50'
+              } transition-colors`}
             >
               Afternoon
             </button>
@@ -121,9 +145,9 @@ export default function VoiceDiaryPage() {
           {completionStatus.missingInformation.includes('evening') && (
             <button
               onClick={() => setActiveTab('evening')}
-              className={`px-3 py-1 rounded-full text-sm ${
-                activeTab === 'evening' ? 'bg-blue-500 text-white' : 'bg-gray-200'
-              }`}
+              className={`px-3 py-1 rounded-md text-sm ${
+                activeTab === 'evening' ? 'bg-primary text-white' : 'bg-secondary/30 hover:bg-secondary/50'
+              } transition-colors`}
             >
               Evening
             </button>
@@ -131,24 +155,34 @@ export default function VoiceDiaryPage() {
           
           <button
             onClick={() => setActiveTab('general')}
-            className={`px-3 py-1 rounded-full text-sm ${
-              activeTab === 'general' ? 'bg-blue-500 text-white' : 'bg-gray-200'
-            }`}
+            className={`px-3 py-1 rounded-md text-sm ${
+              activeTab === 'general' ? 'bg-primary text-white' : 'bg-secondary/30 hover:bg-secondary/50'
+            } transition-colors`}
           >
             General
           </button>
         </div>
+        
+        {completionStatus.nextQuestion && (
+          <div className="p-3 border border-secondary/30 bg-secondary/10 rounded-md mb-4">
+            <p className="text-sm italic">AI Suggestion: {completionStatus.nextQuestion}</p>
+          </div>
+        )}
       </div>
     );
   };
   
   if (loading) {
-    return <div className="p-4 text-center">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="text-primary animate-pulse font-medium">Loading your diary...</div>
+      </div>
+    );
   }
   
   return (
-    <div className="container mx-auto p-4 max-w-4xl">
-      <h1 className="text-2xl font-bold mb-6">
+    <div className="container mx-auto p-6 max-w-4xl">
+      <h1 className="text-2xl font-bold mb-6 text-foreground">
         {diary ? 'Supplement Diary' : 'Create Voice Diary'}
       </h1>
       
@@ -157,37 +191,49 @@ export default function VoiceDiaryPage() {
           {renderMissingInfoTabs()}
           
           {completionStatus.complete ? (
-            <div className="bg-green-50 p-4 rounded mb-6">
-              <p className="text-green-700">
+            <div className="bg-primary/10 border border-primary/30 p-4 rounded-md mb-6">
+              <p className="text-foreground">
                 All information is complete! Click{' '}
                 <button
                   onClick={() => window.location.href = `/diary/${diary.id}`}
-                  className="text-blue-500 underline"
+                  className="text-primary underline hover:text-primary/80 transition-colors"
                 >
                   here
                 </button>
                 {' '}to view the analysis.
               </p>
             </div>
-          ) : (
-            <div className="mb-6">
-              <h2 className="text-lg font-semibold mb-2">Diary Completion Status</h2>
-              <div className="flex flex-col space-y-1">
+          ) : completionStatus.conversationPhase !== 'asking_question' && (
+            <div className="mb-6 bg-card p-4 rounded-md shadow-gothic">
+              <h2 className="text-lg font-semibold mb-2 text-foreground">Diary Completion Status</h2>
+              <div className="flex flex-col space-y-2">
                 <div className="flex items-center">
-                  <span className="w-20">Morning:</span>
-                  <span className={diary?.structuredContent?.morning ? 'text-green-500' : 'text-red-500'}>
+                  <span className="w-24">Morning:</span>
+                  <span className={`px-2 py-0.5 rounded text-sm ${
+                    diary?.structuredContent?.morning 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
                     {diary?.structuredContent?.morning ? 'Complete' : 'Incomplete'}
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-20">Afternoon:</span>
-                  <span className={diary?.structuredContent?.afternoon ? 'text-green-500' : 'text-red-500'}>
+                  <span className="w-24">Afternoon:</span>
+                  <span className={`px-2 py-0.5 rounded text-sm ${
+                    diary?.structuredContent?.afternoon 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
                     {diary?.structuredContent?.afternoon ? 'Complete' : 'Incomplete'}
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-20">Evening:</span>
-                  <span className={diary?.structuredContent?.evening ? 'text-green-500' : 'text-red-500'}>
+                  <span className="w-24">Evening:</span>
+                  <span className={`px-2 py-0.5 rounded text-sm ${
+                    diary?.structuredContent?.evening 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
                     {diary?.structuredContent?.evening ? 'Complete' : 'Incomplete'}
                   </span>
                 </div>
@@ -202,6 +248,7 @@ export default function VoiceDiaryPage() {
           supplementFor={{
             diaryId: diary.id as number,
             type: activeTab,
+            question: completionStatus?.meaningfulQuestion
           }}
           onSuccess={handleSupplementSuccess}
         />
@@ -212,7 +259,7 @@ export default function VoiceDiaryPage() {
       <div className="mt-6">
         <button
           onClick={() => window.location.href = '/diary'}
-          className="px-4 py-2 text-sm bg-gray-200 rounded hover:bg-gray-300"
+          className="px-4 py-2 text-sm bg-secondary/70 text-white rounded hover:bg-secondary transition-colors"
         >
           Back to Diary List
         </button>

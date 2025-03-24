@@ -132,8 +132,8 @@ export default function DiaryDetailPage() {
           <h2 className="text-xl font-semibold mb-4">시간대별 일기</h2>
 
           <div className="space-y-6">
-            <div className="border-l-4 border-yellow-400 pl-4 py-2">
-              <h3 className="font-medium text-yellow-700 mb-2">오전</h3>
+            <div className="border-l-4 border-accent pl-4 py-2">
+              <h3 className="font-medium text-accent mb-2">오전</h3>
               <p className="whitespace-pre-line text-gray-700">
                 {diary.structuredContent.morning || '오전에 대한 기록이 없습니다.'}
               </p>

@@ -12,6 +12,7 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
   const [status, setStatus] = useState('Ready');
   const [submitting, setSubmitting] = useState(false);
   const [prompt, setPrompt] = useState('');
+  const [aiQuestion, setAiQuestion] = useState<string | null>(null);
   
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -43,6 +44,10 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
         setPrompt('What did you do in the afternoon? What happened?');
       } else if (supplementFor.type === 'evening') {
         setPrompt('What happened in the evening? How did you feel?');
+      } else if (supplementFor.type === 'question_response') {
+        // For meaningful question response
+        setPrompt(supplementFor.question || 'Please respond to this meaningful question about your day.');
+        setAiQuestion(supplementFor.question || null);
       } else {
         setPrompt('Is there anything else you would like to record?');
       }
@@ -122,10 +127,28 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
         formData.append('diaryId', supplementFor.diaryId.toString());
         formData.append('supplementType', supplementFor.type);
         
+        // If it's a response to a meaningful question, include the conversation phase
+        if (supplementFor.type === 'question_response' && supplementFor.question) {
+          formData.append('question', supplementFor.question);
+        }
+        
         const response = await supplementVoiceDiary(formData);
         
-        if (response.success && onSuccess) {
-          onSuccess(response.diaryId);
+        if (response.success) {
+          // If there's a meaningful question that should be shown to the user
+          if (response.conversationPhase === 'asking_question' && response.meaningfulQuestion) {
+            setAiQuestion(response.meaningfulQuestion);
+            setStatus(`AI asks: ${response.meaningfulQuestion}`);
+          } 
+          
+          // If there's a next question for missing information
+          else if (response.nextQuestion) {
+            setStatus(`AI suggests: ${response.nextQuestion}`);
+          }
+          
+          if (onSuccess) {
+            onSuccess(response.diaryId);
+          }
         } else {
           setStatus(`Error: ${response.message || 'Unknown error'}`);
         }
@@ -137,8 +160,18 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
         
         const response = await submitVoiceDiary(formData);
         
-        if (response.success && onSuccess) {
-          onSuccess(response.diaryId);
+        if (response.success) {
+          // If there's a next question or meaningful question from AI
+          if (response.conversationPhase === 'asking_question' && response.meaningfulQuestion) {
+            setAiQuestion(response.meaningfulQuestion);
+            setStatus(`AI asks: ${response.meaningfulQuestion}`);
+          } else if (response.nextQuestion) {
+            setStatus(`AI suggests: ${response.nextQuestion}`);
+          }
+          
+          if (onSuccess) {
+            onSuccess(response.diaryId);
+          }
         } else {
           setStatus(`Error: ${response.message || 'Unknown error'}`);
         }
@@ -152,21 +185,27 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
   };
   
   return (
-    <div className="p-6 bg-white rounded shadow-sm">
+    <div className="p-6 bg-card text-card-foreground rounded shadow-gothic">
       <h2 className="text-xl font-bold mb-4">
         {supplementFor ? 'Record Additional Information' : 'Create Voice Entry'}
       </h2>
       
-      <div className="mb-4 p-3 bg-gray-50 border border-gray-200 rounded text-sm">
-        <p>{prompt}</p>
-      </div>
+      {aiQuestion ? (
+        <div className="mb-4 p-4 bg-primary/10 border border-primary/30 rounded-md">
+          <p className="text-foreground font-medium">AI Question: {aiQuestion}</p>
+        </div>
+      ) : (
+        <div className="mb-4 p-3 bg-muted/20 border border-muted rounded-md text-sm">
+          <p>{prompt}</p>
+        </div>
+      )}
       
       <div className="flex flex-col items-center space-y-4">
         <div className="text-xl font-mono">
           {formatTime(recordingTime)}
         </div>
         
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-foreground/70">
           {status}
         </div>
         
@@ -182,7 +221,7 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
           {!isRecording && !audioBlob && (
             <button
               onClick={startRecording}
-              className="px-4 py-2 bg-accent text-white rounded hover:bg-accent/90 focus:outline-none"
+              className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 focus:outline-none transition-colors"
               disabled={submitting}
             >
               Start Recording
@@ -192,7 +231,7 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
           {isRecording && (
             <button
               onClick={stopRecording}
-              className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none"
+              className="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 focus:outline-none transition-colors"
               disabled={submitting}
             >
               Stop Recording
@@ -203,7 +242,7 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
             <>
               <button
                 onClick={resetRecording}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none"
+                className="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 focus:outline-none transition-colors"
                 disabled={submitting}
               >
                 Record Again
@@ -211,7 +250,7 @@ export default function VoiceDiaryRecorder({ onSuccess, supplementFor }: VoiceDi
               
               <button
                 onClick={handleSubmit}
-                className="px-4 py-2 bg-accent text-white rounded hover:bg-accent/90 focus:outline-none"
+                className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 focus:outline-none transition-colors"
                 disabled={submitting}
               >
                 {submitting ? 'Processing...' : 'Submit'}

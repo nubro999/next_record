@@ -125,7 +125,14 @@ export async function getAiAnalysis(id: number): Promise<DiaryAnalysis> {
 }
 
 export async function submitVoiceDiary(formData: FormData): Promise<{
-  message: string;diaryId: number, success: boolean
+  message: string;
+  diaryId: number;
+  success: boolean;
+  conversationPhase?: string;
+  nextQuestion?: string;
+  meaningfulQuestion?: string;
+  complete?: boolean;
+  missingInformation?: string[];
 }> {
   try {
     const response = await api.post('/diaries/voice', formData, {
@@ -141,7 +148,14 @@ export async function submitVoiceDiary(formData: FormData): Promise<{
 }
 
 export async function supplementVoiceDiary(formData: FormData): Promise<{
-  message: string;diaryId: number, success: boolean
+  message: string;
+  diaryId: number;
+  success: boolean;
+  conversationPhase?: string;
+  nextQuestion?: string;
+  meaningfulQuestion?: string;
+  complete?: boolean;
+  missingInformation?: string[];
 }> {
   try {
     const response = await api.post('/diaries/voice/supplement', formData, {
@@ -159,6 +173,14 @@ export async function supplementVoiceDiary(formData: FormData): Promise<{
 export interface CompletionStatus {
   complete: boolean;
   missingInformation: string[];
+  conversationPhase?: string;
+  nextQuestion?: string;
+  meaningfulQuestion?: string;
+  conversationLog?: Array<{
+    role: 'user' | 'assistant';
+    content: string;
+    timestamp?: Date;
+  }>;
 }
 
 export async function getDiaryCompletionStatus(id: number): Promise<CompletionStatus> {

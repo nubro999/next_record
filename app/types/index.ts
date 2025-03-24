@@ -8,6 +8,18 @@ export interface User {
 }
 
 // Diary related types
+export enum ConversationPhase {
+  COLLECTING_INFO = 'collecting_info',
+  ASKING_QUESTION = 'asking_question',
+  COMPLETE = 'complete'
+}
+
+export interface ConversationMessage {
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp?: Date;
+}
+
 export interface Diary {
   id?: number;
   title: string;
@@ -23,6 +35,11 @@ export interface Diary {
   analysis: DiaryAnalysis;
   isAnalyzed: boolean;
   isComplete: boolean;
+  conversationLog?: ConversationMessage[];
+  conversationPhase?: ConversationPhase;
+  nextQuestion?: string;
+  meaningfulQuestion?: string;
+  meaningfulAnswer?: string;
 }
 
 export interface DiaryAnalysis {
@@ -77,6 +94,7 @@ export interface VoiceDiaryRecorderProps {
   onSuccess?: (diaryId: number) => void;
   supplementFor?: { 
     diaryId: number;
-    type: 'morning' | 'afternoon' | 'evening' | 'general';
+    type: 'morning' | 'afternoon' | 'evening' | 'general' | 'question_response';
+    question?: string;
   };
 }

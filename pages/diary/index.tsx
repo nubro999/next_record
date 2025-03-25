@@ -117,7 +117,7 @@ export default function DiaryListPage() {
             })
             .map((month) => (
               <div key={month} className="fade-in">
-                <h2 className="font-cinzel text-xl text-accent mb-6 pb-3 border-b border-muted flex items-center">
+                <h2 className="text-xl text-accent mb-6 pb-3 border-b border-muted flex items-center">
                   <FaBookOpen className="mr-3 text-primary/70" />
                   <span>{month}</span>
                 </h2>

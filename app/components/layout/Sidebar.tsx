@@ -12,8 +12,8 @@ export default function Sidebar() {
   const menuItems = [
     { name: 'Chronicles', href: '/diary', icon: <FaBook /> },
     { name: 'Reflections', href: '/analysis', icon: <FaScroll /> },
-    { name: 'Almanac', href: '/calendar', icon: <FaCalendarAlt /> },
-    { name: 'Grimoire', href: '/settings', icon: <FaCog /> },
+    { name: 'Calendar', href: '/calendar', icon: <FaCalendarAlt /> },
+    { name: 'Settings', href: '/settings', icon: <FaCog /> },
   ];
 
   return (

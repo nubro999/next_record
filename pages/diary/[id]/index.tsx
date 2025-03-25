@@ -113,7 +113,7 @@ export default function DiaryDetailPage() {
         <div className="flex space-x-2">
           <button
             onClick={() => router.push(`/diary/${id}/edit`)}
-            className="bg-gray-100 px-3 py-1 rounded hover:bg-gray-200"
+            className="text-gray-800 bg-gray-100 px-3 py-1 rounded hover:bg-gray-200"
           >
             수정
           </button>
@@ -129,7 +129,7 @@ export default function DiaryDetailPage() {
       {/* 구조화된 일기 내용 (시간대별) */}
       {diary.structuredContent && (
         <div className="mb-8 bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4">시간대별 일기</h2>
+          <h2 className="text-gray-700 text-xl font-semibold mb-4">시간대별 일기</h2>
 
           <div className="space-y-6">
             <div className="border-l-4 border-accent pl-4 py-2">
@@ -158,14 +158,14 @@ export default function DiaryDetailPage() {
 
       {/* 전체 일기 내용 */}
       <div className="mb-8 bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">전체 일기 내용</h2>
+        <h2 className="text-gray-700 text-xl font-semibold mb-4">전체 일기 내용</h2>
         <div className="whitespace-pre-line text-gray-700">{diary.content}</div>
       </div>
 
       {/* AI 분석 결과 */}
       <div className="mb-8 bg-white p-6 rounded-lg shadow">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">AI 분석 결과</h2>
+          <h2 className="text-gray-700 text-xl font-semibold">AI 분석 결과</h2>
 
           {!diary.isAnalyzed && (
             <button
@@ -187,13 +187,13 @@ export default function DiaryDetailPage() {
             {/* 감정 분석 */}
             <div className="bg-blue-50 p-4 rounded-lg">
               <h3 className="font-medium text-blue-800 mb-2">오늘의 감정</h3>
-              <p className="text-lg font-semibold mb-1">{analysis.feelings.emotion}</p>
+              <p className="text-gray-600 text-lg font-semibold mb-1">{analysis.feelings.emotion}</p>
               <p className="text-gray-700">{analysis.feelings.reason}</p>
             </div>
 
             {/* 키워드 */}
             <div>
-              <h3 className="font-medium mb-2">주요 키워드</h3>
+              <h3 className="text-gray-700 font-medium mb-2">주요 키워드</h3>
               <div className="flex flex-wrap gap-2">
                 {analysis.keywords.map((keyword, index) => (
                   <span
@@ -207,11 +207,11 @@ export default function DiaryDetailPage() {
             </div>
 
             {/* 요약 */}
-            <div>
-              <h3 className="font-medium mb-2">시간대별 요약</h3>
+            <div className='text-gray-800'>
+              <h3 className="text-gray-800 font-medium mb-2">시간대별 요약</h3>
               <div className="space-y-2">
                 <div className="flex">
-                  <span className="font-medium w-20 text-yellow-600">오전:</span>
+                  <span className="font-medium w-20 text-pink-500">오전:</span>
                   <span>{analysis.summary.morning}</span>
                 </div>
                 <div className="flex">
@@ -227,7 +227,7 @@ export default function DiaryDetailPage() {
 
             {/* 질문 */}
             {analysis.question && (
-              <div className="bg-yellow-50 p-4 rounded-lg">
+              <div className="bg-yellow-50 p-4 rounded-lg text-gray-800">
                 <h3 className="font-medium text-yellow-800 mb-2">AI의 질문</h3>
                 <p className="italic">{analysis.question}</p>
               </div>
@@ -244,7 +244,7 @@ export default function DiaryDetailPage() {
       <div className="flex space-x-4">
         <button
           onClick={() => router.push('/diary')}
-          className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+          className="text-gray-800 bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
         >
           목록으로
         </button>

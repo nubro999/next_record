@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <div className="container mx-auto py-12 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-6">
           Welcome to <span className="text-primary">RecorD</span>
         </h1>
         
@@ -61,7 +61,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-4">
               <FaBook className="text-4xl text-primary/70" />
             </div>
-            <h3 className="font-cinzel text-xl text-accent mb-3">Mystic Chronicles</h3>
+            <h3 className="text-xl text-accent mb-3">Mystic Chronicles</h3>
             <p className="text-foreground/80">
               Record your daily thoughts in an enchanted journal designed for the darkly inclined.
             </p>
@@ -71,7 +71,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-4">
               <FaFeather className="text-4xl text-primary/70" />
             </div>
-            <h3 className="font-cinzel text-xl text-accent mb-3">Dark Insights</h3>
+            <h3 className="text-xl text-accent mb-3">Dark Insights</h3>
             <p className="text-foreground/80">
               Gain mystical insights through AI-powered analysis of your written chronicles.
             </p>
@@ -81,7 +81,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-4">
               <FaScroll className="text-4xl text-primary/70" />
             </div>
-            <h3 className="font-cinzel text-xl text-accent mb-3">Voice Conjuring</h3>
+            <h3 className="text-xl text-accent mb-3">Voice Conjuring</h3>
             <p className="text-foreground/80">
               Speak your thoughts and watch as they materialize through our spectral recording feature.
             </p>

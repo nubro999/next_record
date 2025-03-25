@@ -1,9 +1,10 @@
 /* Gothic Fantasy Theme */
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;500;600;700&family=Eczar:wght@400;500;600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=양진체:wght@400;500;600;700&family=Eczar:wght@400;500;600&display=swap');
+@import url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff');
 /* Base Elements */
 .gf-title {
-  font-family: 'Cinzel', serif;
+  font-family: '양진체', serif;
   font-weight: 700;
   color: #d1b48c;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -11,20 +12,20 @@
 }
 
 .gf-heading {
-  font-family: 'Cinzel', serif;
+  font-family: '양진체', serif;
   font-weight: 600;
   color: #d1b48c;
   letter-spacing: 0.5px;
 }
 
 .gf-body {
-  font-family: 'IM Fell English', serif;
+  font-family: '양진체', serif;
   color: #a7a7a7;
   line-height: 1.7;
 }
 
 .gf-quote {
-  font-family: 'IM Fell English', serif;
+  font-family: '양진체', serif;
   font-style: italic;
   color: #d1b48c;
   border-left: 3px solid #482d2d;
@@ -59,7 +60,7 @@
 
 /* Buttons */
 .gf-btn-primary {
-  font-family: 'Cinzel', serif;
+  font-family: '양진체', serif;
   background-color: #482d2d;
   color: #d1b48c;
   border: 1px solid #684141;
@@ -79,7 +80,7 @@
 }
 
 .gf-btn-secondary {
-  font-family: 'Cinzel', serif;
+  font-family: '양진체', serif;
   background-color: rgba(0, 0, 0, 0.5);
   color: #d1b48c;
   border: 1px solid #392727;
@@ -103,7 +104,7 @@
   padding: 0.75rem;
   width: 100%;
   border-radius: 2px;
-  font-family: 'IM Fell English', serif;
+  font-family: '양진체';
   transition: all 0.3s ease;
 }
 
@@ -120,7 +121,7 @@
   padding: 0.75rem;
   width: 100%;
   border-radius: 2px;
-  font-family: 'IM Fell English', serif;
+  font-family: '양진체';
   min-height: 150px;
   transition: all 0.3s ease;
   line-height: 1.6;

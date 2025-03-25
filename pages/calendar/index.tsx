@@ -31,7 +31,7 @@ export default function CalendarPage() {
     return (
       <div className="container mx-auto p-8 text-center">
         <div className="text-accent text-xl animate-pulse">
-          Consulting the mystical almanac...
+          Consulting the Canlendar...
         </div>
       </div>
     );
@@ -90,19 +90,19 @@ export default function CalendarPage() {
   
   return (
     <div className="container mx-auto p-6 max-w-4xl">
-      <h1 className="font-cinzel text-3xl font-bold mb-10 text-accent">Mystic Almanac</h1>
+      <h1 className="text-3xl font-bold mb-10 text-accent">Calendar</h1>
       
       <div className="bg-card border border-border shadow-gothic p-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="font-cinzel text-xl text-accent flex items-center">
+          <h2 className="text-xl text-accent flex items-center">
             <FaCalendarAlt className="mr-3 text-primary/70" />
             <span>{format(new Date(currentYear, currentMonth), 'MMMM yyyy')}</span>
           </h2>
           <div className="flex space-x-2">
-            <button className="px-3 py-1 text-xs border border-border/50 bg-muted/30 text-accent font-cinzel">
+            <button className="px-3 py-1 text-xs border border-border/50 bg-muted/30 text-accent ">
               Previous
             </button>
-            <button className="px-3 py-1 text-xs border border-border/50 bg-muted/30 text-accent font-cinzel">
+            <button className="px-3 py-1 text-xs border border-border/50 bg-muted/30 text-accent ">
               Next
             </button>
           </div>
@@ -141,7 +141,7 @@ export default function CalendarPage() {
                       ))}
                       
                       {entriesByDay[day].length > 2 && (
-                        <div className="text-xs text-accent/70 text-center font-cinzel">
+                        <div className="text-xs text-accent/70 text-center ">
                           +{entriesByDay[day].length - 2} more
                         </div>
                       )}
@@ -155,7 +155,7 @@ export default function CalendarPage() {
       </div>
       
       <div className="mt-10 bg-card border border-border shadow-gothic p-6">
-        <h2 className="font-cinzel text-lg text-accent mb-4 flex items-center">
+        <h2 className=" text-lg text-accent mb-4 flex items-center">
           <FaStar className="mr-3 text-primary/70" />
           <span>Notable Dates</span>
         </h2>

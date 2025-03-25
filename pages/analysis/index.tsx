@@ -37,7 +37,7 @@ export default function AnalysisPage() {
   
   return (
     <div className="container mx-auto p-6 max-w-4xl">
-      <h1 className="font-cinzel text-3xl font-bold mb-10 text-accent">Mystic Reflections</h1>
+      <h1 className="text-3xl font-bold mb-10 text-accent">Mystic Reflections</h1>
       
       {diaries.length === 0 ? (
         <div className="text-center py-16 bg-card border border-border shadow-gothic rounded-sm">
@@ -50,7 +50,7 @@ export default function AnalysisPage() {
       ) : (
         <div className="space-y-8">
           <div className="bg-card border border-border shadow-gothic p-6">
-            <h2 className="font-cinzel text-xl text-accent mb-4 flex items-center">
+            <h2 className="text-xl text-accent mb-4 flex items-center">
               <FaChartBar className="mr-3 text-primary/70" />
               <span>Sentiment Overview</span>
             </h2>

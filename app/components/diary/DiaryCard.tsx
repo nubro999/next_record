@@ -31,7 +31,7 @@ export default function DiaryCard({ diary }: DiaryCardProps) {
         
         <h2 className="text-xl text-accent mb-4 pr-24">{diary.title || 'Untitled Chronicle'}</h2>
         
-        <p className="font-fell text-foreground/80 line-clamp-3 mb-6">{diary.content || 'No content'}</p>
+        <p className="text-foreground/80 line-clamp-3 mb-6">{diary.content || 'No content'}</p>
         
         <div className="flex justify-between items-center">
           {diary.analysis?.feelings?.emotion ? (

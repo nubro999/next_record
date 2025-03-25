@@ -28,7 +28,7 @@ export default function AnalysisPage() {
   if (loading) {
     return (
       <div className="container mx-auto p-8 text-center">
-        <div className="font-fell text-accent text-xl animate-pulse">
+        <div className="text-accent text-xl animate-pulse">
           Analyzing your chronicles...
         </div>
       </div>

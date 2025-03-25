@@ -49,7 +49,7 @@ export default function Sidebar() {
                     <span className={`mr-3 text-sm ${isActive ? 'text-primary' : 'text-muted'}`}>
                       {item.icon}
                     </span>
-                    <span className="font-fell">{item.name}</span>
+                    <span className="">{item.name}</span>
                   </Link>
                 </li>
               );

@@ -30,7 +30,7 @@ export default function CalendarPage() {
   if (loading) {
     return (
       <div className="container mx-auto p-8 text-center">
-        <div className="font-fell text-accent text-xl animate-pulse">
+        <div className="text-accent text-xl animate-pulse">
           Consulting the mystical almanac...
         </div>
       </div>

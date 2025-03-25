@@ -17,7 +17,7 @@ export default function SettingsPage() {
   
   return (
     <div className="container mx-auto p-6 max-w-4xl">
-      <h1 className="font-cinzel text-3xl font-bold mb-10 text-accent">
+      <h1 className=" text-3xl font-bold mb-10 text-accent">
         <span className="flex items-center">
           <FaCog className="mr-4 text-primary/70" />
           Personal Grimoire
@@ -29,7 +29,7 @@ export default function SettingsPage() {
         <div className="w-full md:w-64 bg-card border border-border shadow-gothic">
           <nav className="p-4">
             <div className="mb-4 px-2">
-              <h3 className="font-cinzel text-xs uppercase tracking-wider text-accent/70 mb-2">Settings</h3>
+              <h3 className=" text-xs uppercase tracking-wider text-accent/70 mb-2">Settings</h3>
             </div>
             <ul className="space-y-1">
               {tabs.map((tab) => (
@@ -45,7 +45,7 @@ export default function SettingsPage() {
                     <span className={`mr-3 text-sm ${activeTab === tab.id ? 'text-primary' : 'text-muted'}`}>
                       {tab.icon}
                     </span>
-                    <span className="font-fell">{tab.name}</span>
+                    <span className="">{tab.name}</span>
                   </button>
                 </li>
               ))}
@@ -57,11 +57,11 @@ export default function SettingsPage() {
         <div className="flex-1 bg-card border border-border shadow-gothic p-6">
           {activeTab === 'account' && (
             <div>
-              <h2 className="font-cinzel text-xl text-accent mb-6">Account Settings</h2>
+              <h2 className=" text-xl text-accent mb-6">Account Settings</h2>
               
               <div className="space-y-6">
                 <div className="border-b border-border/30 pb-6">
-                  <h3 className="font-cinzel text-accent/80 text-lg mb-4">Profile Information</h3>
+                  <h3 className=" text-accent/80 text-lg mb-4">Profile Information</h3>
                   
                   <div className="space-y-4">
                     <div>
@@ -70,7 +70,7 @@ export default function SettingsPage() {
                         type="text" 
                         value={user?.username || ''} 
                         disabled
-                        className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90 font-fell focus:outline-none focus:border-primary/70"
+                        className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90  focus:outline-none focus:border-primary/70"
                       />
                     </div>
                     
@@ -80,15 +80,15 @@ export default function SettingsPage() {
                         type="email" 
                         value={user?.email || ''} 
                         disabled
-                        className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90 font-fell focus:outline-none focus:border-primary/70"
+                        className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90  focus:outline-none focus:border-primary/70"
                       />
                     </div>
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="font-cinzel text-accent/80 text-lg mb-4">Personalize</h3>
-                  <p className="text-foreground/70 font-fell italic text-center py-4">
+                  <h3 className=" text-accent/80 text-lg mb-4">Personalize</h3>
+                  <p className="text-foreground/70  italic text-center py-4">
                     Personalization options coming soon...
                   </p>
                 </div>
@@ -98,16 +98,16 @@ export default function SettingsPage() {
           
           {activeTab === 'security' && (
             <div>
-              <h2 className="font-cinzel text-xl text-accent mb-6">Security Settings</h2>
+              <h2 className=" text-xl text-accent mb-6">Security Settings</h2>
               <div>
-                <h3 className="font-cinzel text-accent/80 text-lg mb-4">Change Password</h3>
+                <h3 className=" text-accent/80 text-lg mb-4">Change Password</h3>
                 
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm text-foreground/70 mb-2">Current Password</label>
                     <input 
                       type="password" 
-                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90 font-fell focus:outline-none focus:border-primary/70"
+                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90  focus:outline-none focus:border-primary/70"
                     />
                   </div>
                   
@@ -115,7 +115,7 @@ export default function SettingsPage() {
                     <label className="block text-sm text-foreground/70 mb-2">New Password</label>
                     <input 
                       type="password" 
-                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90 font-fell focus:outline-none focus:border-primary/70"
+                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90  focus:outline-none focus:border-primary/70"
                     />
                   </div>
                   
@@ -123,7 +123,7 @@ export default function SettingsPage() {
                     <label className="block text-sm text-foreground/70 mb-2">Confirm New Password</label>
                     <input 
                       type="password" 
-                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90 font-fell focus:outline-none focus:border-primary/70"
+                      className="w-full bg-background/50 border border-border/50 p-3 text-foreground/90  focus:outline-none focus:border-primary/70"
                     />
                   </div>
                   
@@ -139,8 +139,8 @@ export default function SettingsPage() {
           
           {activeTab === 'appearance' && (
             <div>
-              <h2 className="font-cinzel text-xl text-accent mb-6">Appearance Settings</h2>
-              <p className="text-foreground/70 font-fell italic text-center py-8">
+              <h2 className=" text-xl text-accent mb-6">Appearance Settings</h2>
+              <p className="text-foreground/70  italic text-center py-8">
                 Theme customization options coming soon...
               </p>
             </div>
@@ -148,8 +148,8 @@ export default function SettingsPage() {
           
           {activeTab === 'notifications' && (
             <div>
-              <h2 className="font-cinzel text-xl text-accent mb-6">Notification Settings</h2>
-              <p className="text-foreground/70 font-fell italic text-center py-8">
+              <h2 className=" text-xl text-accent mb-6">Notification Settings</h2>
+              <p className="text-foreground/70  italic text-center py-8">
                 Notification preferences coming soon...
               </p>
             </div>

@@ -57,7 +57,7 @@ export default function DiaryListPage() {
   if (loading) {
     return (
       <div className="container mx-auto p-8 text-center">
-        <div className="font-fell text-accent text-xl animate-pulse">
+        <div className="text-accent text-xl animate-pulse">
           Summoning chronicles from the beyond...
         </div>
       </div>

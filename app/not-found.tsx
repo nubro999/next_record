@@ -11,7 +11,7 @@ export default function NotFound() {
   
   return (
     <div className="container mx-auto p-8 text-center">
-      <div className="font-fell text-accent text-xl animate-pulse">
+      <div className="text-accent text-xl animate-pulse">
         Page not found, redirecting to home...
       </div>
       <div className="mt-4">

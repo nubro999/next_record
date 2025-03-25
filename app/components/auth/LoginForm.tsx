@@ -58,7 +58,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded shadow-sm">
+    <div className=" text-black max-w-md mx-auto bg-white p-6 rounded shadow-sm">
       <h2 className="text-2xl font-bold mb-6">Login</h2>
       
       {error && (
